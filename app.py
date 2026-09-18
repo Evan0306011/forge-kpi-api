@@ -5,7 +5,7 @@ app = FastAPI()
 
 @app.get("/")
 def root():
-    return {"status": "working"}
+    return {"status": "working-V2"}
 
 @app.get("/routes")
 def routes():
