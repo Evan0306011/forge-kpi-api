@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from mcp_server import mcp
 
 app = FastAPI()
 
@@ -7,3 +8,8 @@ def root():
     return {
         "status": "working"
     }
+
+app.mount(
+    "/mcp",
+    mcp.streamable_http_app()
+)
