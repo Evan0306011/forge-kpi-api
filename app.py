@@ -4,6 +4,20 @@ from mcp_server import mcp
 app = FastAPI()
 
 
+from fastapi import Request
+
+@app.get("/request-info")
+def request_info(request: Request):
+    return {
+        "url": str(request.url),
+        "scheme": request.url.scheme,
+        "headers": {
+            "x-forwarded-proto": request.headers.get("x-forwarded-proto"),
+            "host": request.headers.get("host")
+        }
+    }
+
+
 @app.get("/")
 def root():
     return {
