@@ -53,6 +53,6 @@ def mcp_check():
 
 
 app.mount(
-    "/mcp",
+    "/mcp/",
     mcp.streamable_http_app()
 )
