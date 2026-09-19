@@ -1,31 +1,22 @@
 from mcp.server.mcpserver import MCPServer
 
+# Create MCP Server
 mcp = MCPServer("RF Analysis Expert")
 
+# Test Tool
 @mcp.tool()
-def health_check():
+def hello():
     """
-    Check whether the MCP server is operational.
+    Test MCP tool.
     """
-    return {
-        "status": "healthy"
-    }
+    return "Hello"
 
-
-@mcp.tool()
-def hello(name: str):
-    """
-    Return a greeting message.
-    """
-    return f"Hello {name}"
-
-
-@mcp.tool()
-def cluster_report(cluster_name: str):
-    """
-    Generate a sample cluster report.
-    """
-    return {
-        "cluster": cluster_name,
-        "status": "success"
-    }
+# Start MCP Server
+if __name__ == "__main__":
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=8080,
+        streamable_http_path="/mcp"
+    )
+`
