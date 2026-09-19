@@ -23,6 +23,14 @@ def request_info(request: Request):
         }
     }
 
+@app.get("/mcp-type")
+def mcp_type():
+    return {
+        "type": str(type(mcp)),
+        "has_streamable": hasattr(mcp, "streamable_http_app"),
+        "has_sse": hasattr(mcp, "sse_app")
+    }
+
 
 @app.get("/")
 def root():
