@@ -33,6 +33,17 @@ def tools_health():
 def routes():
     return [route.path for route in app.routes]
 
+@app.get("/debug")
+def debug():
+    return {
+        "status": "healthy",
+        "tools": [
+            "health_check",
+            "hello",
+            "cluster_report"
+        ]
+    }
+
 
 app.mount(
     "/mcp",
