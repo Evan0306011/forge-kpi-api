@@ -44,6 +44,13 @@ def debug():
         ]
     }
 
+@app.get("/mcp-check")
+def mcp_check():
+    return {
+        "mcp_loaded": str(type(mcp)),
+        "endpoint": "/mcp"
+    }
+
 
 app.mount(
     "/mcp",
