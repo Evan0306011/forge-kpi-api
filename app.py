@@ -97,6 +97,6 @@ def version():
 
 
 app.mount(
-    "/mcp/",
+    "/",
     mcp.streamable_http_app()
 )
