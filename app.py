@@ -1,8 +1,14 @@
 from fastapi import FastAPI
 from mcp_server import mcp
 
+from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
+
 app = FastAPI()
 
+app.add_middleware(
+    ProxyHeadersMiddleware,
+    trusted_hosts="*"
+)
 
 from fastapi import Request
 
