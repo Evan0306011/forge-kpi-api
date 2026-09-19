@@ -19,7 +19,7 @@ def root():
 
 @app.get("/routes")
 def routes():
-    return ["test"]
+    return [route.path for route in app.routes]
 
 app.mount(
     "/mcp",
