@@ -14,9 +14,14 @@ def health_check():
 @app.get("/")
 def root():
     return {
-        "status": "working-v5"
+        "status": "working-v6"
     }
 
 @app.get("/routes")
 def routes():
     return ["test"]
+
+app.mount(
+    "/mcp",
+    mcp.streamable_http_app()
+)
