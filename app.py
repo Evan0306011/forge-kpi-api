@@ -51,26 +51,6 @@ def mcp_check():
         "endpoint": "/mcp"
     }
 
-@app.get("/mcp-inspect")
-def mcp_inspect():
-    return {
-        "methods": [
-            m for m in dir(mcp)
-            if "app" in m.lower()
-               or "http" in m.lower()
-               or "stream" in m.lower()
-        ]
-    }
-
-@app.get("/version")
-def version():
-    import mcp
-
-    return {
-        "mcp_version": getattr(mcp, "__version__", "unknown"),
-        "mcp_type": str(type(mcp))
-    }
-}
 
 
 app.mount(
