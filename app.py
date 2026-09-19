@@ -51,6 +51,13 @@ def mcp_check():
         "endpoint": "/mcp"
     }
 
+@app.get("/version")
+def version():
+    import mcp
+    return {
+        "mcp_version": getattr(mcp, "__version__", "unknown")
+    }
+
 
 
 app.mount(
