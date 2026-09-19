@@ -1,12 +1,12 @@
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("Forge KPI MCP")
+mcp = FastMCP("RF Analysis Expert")
 
 
 @mcp.tool()
 def health_check():
     """
-    Test MCP connection
+    Check whether the MCP server is operational.
     """
     return {
         "status": "healthy"
@@ -14,12 +14,19 @@ def health_check():
 
 
 @mcp.tool()
-def cluster_summary(cluster_name: str):
+def hello(name: str):
     """
-    Example cluster analysis tool
+    Return a greeting message.
     """
+    return f"Hello {name}"
 
+
+@mcp.tool()
+def cluster_report(cluster_name: str):
+    """
+    Generate a sample cluster report.
+    """
     return {
         "cluster": cluster_name,
-        "status": "completed"
+        "status": "success"
     }
