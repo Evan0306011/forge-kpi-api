@@ -1,49 +1,8 @@
 from fastapi import FastAPI
-from mcp.server.fastmcp import FastMCP
+from mcp_server import mcp
 
-app = FastAPI(
-    title="RF Analysis Expert MCP Server"
-)
+app = FastAPI()
 
-# MCP Server
-mcp = FastMCP("RF Analysis Expert")
-
-# ----------------------------
-# MCP Tools
-# ----------------------------
-
-@mcp.tool()
-def health_check():
-    """
-    Check whether the MCP server is operational.
-    """
-    return {
-        "status": "healthy"
-    }
-
-
-@mcp.tool()
-def hello(name: str):
-    """
-    Return a greeting message for the specified person.
-    """
-    return f"Hello {name}"
-
-
-@mcp.tool()
-def cluster_report(cluster_name: str):
-    """
-    Generate a sample cluster report.
-    """
-    return {
-        "cluster": cluster_name,
-        "status": "success"
-    }
-
-
-# ----------------------------
-# REST Endpoints
-# ----------------------------
 
 @app.get("/")
 def root():
@@ -74,10 +33,6 @@ def tools_health():
 def routes():
     return [route.path for route in app.routes]
 
-
-# ----------------------------
-# MCP Endpoint
-# ----------------------------
 
 app.mount(
     "/mcp",
