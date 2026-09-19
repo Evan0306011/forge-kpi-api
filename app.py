@@ -31,6 +31,14 @@ def mcp_type():
         "has_sse": hasattr(mcp, "sse_app")
     }
 
+@app.get("/mcp-route-test")
+def mcp_route_test():
+    return {
+        "mcp_type": str(type(mcp)),
+        "streamable": hasattr(mcp, "streamable_http_app"),
+        "sse": hasattr(mcp, "sse_app")
+    }
+
 
 @app.get("/")
 def root():
