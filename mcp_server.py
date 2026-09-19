@@ -1,7 +1,6 @@
-from mcp.server.fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 
-mcp = FastMCP("RF Analysis Expert")
-
+mcp = MCPServer("RF Analysis Expert")
 
 @mcp.tool()
 def health_check():
